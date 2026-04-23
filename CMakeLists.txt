@@ -26,3 +26,4 @@ llvm_map_components_to_libnames(LLVM_LIBS
 )
 add_subdirectory(src/dsl)
 add_subdirectory(tools/lexer-test)
+add_subdirectory(tools/ipdef-parser-test)
