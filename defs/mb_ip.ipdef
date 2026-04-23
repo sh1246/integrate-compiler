@@ -1,0 +1,70 @@
+
+/ip-definition/ {
+    compatible = "mangoboost,uart-v2";
+    data-width = <32>;
+    addr-width = <8>;
+
+    clocks {
+        clk_sys  { frequency = <100000000>; domain = "cd_sys";  };
+        clk_uart { frequency = <48000000>;  domain = "cd_uart"; };
+    };
+
+    regmap@0x00 {
+        label = "UART_CTRL";
+        reg = <0x00 0x4>;
+        access = "RW";
+        reset-value = <0x00000000>;
+        fields {
+            TX_EN    { bits = <0 0>;   desc = "TX enable";       };
+            RX_EN    { bits = <1 1>;   desc = "RX enable";       };
+            LOOPBACK { bits = <2 2>;   desc = "Loopback mode";   };
+            BAUD_DIV { bits = <16 31>; desc = "Baud divisor";    };
+        };
+    };
+
+    regmap@0x04 {
+        label = "UART_STATUS";
+        reg = <0x04 0x4>;
+        access = "RO";
+        reset-value = <0x00000003>;
+        fields {
+            TX_READY  { bits = <0 0>; desc = "TX FIFO not full";  };
+            RX_VALID  { bits = <1 1>; desc = "RX data available"; };
+            TX_FULL   { bits = <2 2>; desc = "TX FIFO full";      };
+            OVERFLOW  { bits = <8 8>; desc = "RX overflow error"; };
+        };
+    };
+
+    regmap@0x08 {
+        label = "UART_TXDATA";
+        reg = <0x08 0x4>;
+        access = "WO";
+        reset-value = <0x00000000>;
+        fields {
+            TXDATA { bits = <0 7>; desc = "TX data byte"; };
+        };
+    };
+
+    regmap@0x0C {
+        label = "UART_RXDATA";
+        reg = <0x0C 0x4>;
+        access = "RO";
+        reset-value = <0x00000000>;
+        fields {
+            RXDATA { bits = <0 7>;   desc = "RX data byte";        };
+            RXERR  { bits = <16 16>; desc = "Parity/frame error";  };
+        };
+    };
+
+    ports {
+        s_axi_ctrl {
+            type       = "AXI4-Lite";
+            direction  = "slave";
+            data-width = <32>;
+            addr-width = <8>;
+        };
+        uart_tx { type = "wire"; direction = "out"; };
+        uart_rx { type = "wire"; direction = "in";  };
+        irq     { type = "wire"; direction = "out"; };
+    };
+};
