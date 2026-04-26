@@ -199,8 +199,6 @@ std::unique_ptr<IPDefNode> IPDefParser::parseIPDef() {
     //Normal property with =
     expect(TokenKind::Equals, "expected '='");
     if (key == "compatible") node->compatible = parseStringValue();
-    else if (key == "data-width") node->dataWidth = (int)parseAngledInt();
-    else if (key == "addr-width") node->addrWidth = (int)parseAngledInt();
     else {
       emitError(CurTok.loc, "unkwon ip-definition property '"+key+"'");
       advance();

@@ -1,9 +1,6 @@
 
 /ip-definition/ {
     compatible = "mangoboost,uart-v2";
-    data-width = <32>;
-    addr-width = <8>;
-
     clocks {
         clk_sys  { frequency = <100000000>; domain = "cd_sys";  };
         clk_uart { frequency = <48000000>;  domain = "cd_uart"; };

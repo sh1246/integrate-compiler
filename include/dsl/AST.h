@@ -41,8 +41,6 @@ struct ClockPortNode {
 //IP-definitino
 struct IPDefNode {
   std::string compatible;   //Unique Identifier of IP e.g, mb, uart-v2
-  int dataWidth = 32;
-  int addrWidth = 8;
   std::vector<RegmapNode> regmaps;
   std::vector<PortNode>   ports;
   std::vector<ClockPortNode> clocks;

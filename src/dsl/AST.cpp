@@ -5,7 +5,6 @@
 void IPDefNode::dump() const {
   std::printf("\n===IPDefNode===\n");
   std::printf("compatible : %s\n", compatible.c_str());
-  std::printf("dataWidth : %0d\n", dataWidth);
   std::printf("\nClocks (%zu):\n", clocks.size());
   for (auto& itr : clocks)
     std::printf("%s,Freq=%llu,Domain=%s\n",itr.name.c_str(), itr.frequency, itr.domain.c_str());
