@@ -25,5 +25,7 @@ llvm_map_components_to_libnames(LLVM_LIBS
     BitWriter   # .bc dump
 )
 add_subdirectory(src/dsl)
+add_subdirectory(src/ir)
 add_subdirectory(tools/lexer-test)
 add_subdirectory(tools/ipdef-parser-test)
+add_subdirectory(tools/ipdef-ir-test)
