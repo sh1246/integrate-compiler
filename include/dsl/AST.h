@@ -47,3 +47,21 @@ struct IPDefNode {
   //Debug
   void dump() const;
 };
+
+//Fabric
+struct NetNode {
+  std::string name;
+  //TODO
+};
+struct CDCNode {
+  std::string name;
+  //TODO
+};
+struct FabricDefNode {
+  std::string name;
+  //TODO
+};
+struct SoCDefNode {
+  std::string name;
+  //TODO
+};

@@ -3,8 +3,8 @@ add_library(ip_dsl
     AST.cpp
     ParserBase.cpp
     IPDefParser.cpp
-    FabricParser.cpp
-    SoCParser.cpp
+    #FabricParser.cpp
+    #SoCParser.cpp
 )
 target_include_directories(ip_dsl PUBLIC
     ${CMAKE_SOURCE_DIR}/include
